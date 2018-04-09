@@ -51,6 +51,13 @@ export default {
         probeType: this.probeType,
         click: this.click
       })
+
+      if (this.listenScroll) {
+        let _self = this
+        this.scroller.on('scroll', pos => {
+          _self.$emit('scroll', pos)
+        })
+      }
     },
     disable() {
       this.scroller && this.scroller.disable()
@@ -60,6 +67,9 @@ export default {
     },
     refresh() {
       this.scroller && this.scroller.refresh()
+    },
+    scrollToElement() {
+      this.scroller && this.scroller.scrollToElement.apply(this.scroller, arguments)
     }
   },
   watch: {
