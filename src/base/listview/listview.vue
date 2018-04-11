@@ -11,7 +11,7 @@
             <li class="list-group" v-for="(group,index) in data" :key="'group' + index" ref="listGroup">
                 <h2 class="list-group-title">{{group.title}}</h2>
                 <ul>
-                    <li class="list-group-item" v-for="(item,subindex) in group.items" :key="'item' + subindex">
+                    <li @click="itemClickHandle(item)" class="list-group-item" v-for="(item,subindex) in group.items" :key="'item' + subindex">
                         <img v-lazy="item.avatar" class="avatar">
                         <span class="name">{{item.name}}</span>
                     </li>
@@ -85,6 +85,9 @@ export default {
     }
   },
   methods: {
+    itemClickHandle(item) {
+      this.$emit('itemClick', item)
+    },
     listviewscroll(pos) {
       this.scrollY = pos.y
     },
