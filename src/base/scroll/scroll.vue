@@ -70,6 +70,9 @@ export default {
     },
     scrollToElement() {
       this.scroller && this.scroller.scrollToElement.apply(this.scroller, arguments)
+    },
+    scrollTo() {
+      this.scroller && this.scroller.scrollTo.apply(this.scroller, arguments)
     }
   },
   watch: {
